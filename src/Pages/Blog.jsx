@@ -12,7 +12,6 @@ const Blog = () => {
     reading_time_minutes,
     public_reactions_count,
     published_at,
-    tags,
   } = blog;
   return (
     <div className="max-w-4xl px-6 py-16 mx-auto space-y-12">
