@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const Blog = () => {
+  const [tabIndex, setTabIndex] = useState(0);
+
   const blog = useLoaderData();
   const {
     comments_count,
@@ -30,8 +33,10 @@ const Blog = () => {
           {/* tabs */}
 
           <div className="flex items-center -mx-4 overflow-x-auto overflow-y-hidden sm:justify-start flex-nowrap">
-            <Link to=''
-              className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border-b"
+            <Link
+            onClick={()=>setTabIndex(0)}
+            //   to=""
+              className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2 ${tabIndex===0?'border border-b-0':'border-b'} rounded-t-lg `}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -47,8 +52,10 @@ const Blog = () => {
               </svg>
               <span>Content</span>
             </Link>
-            <Link to={`author`}
-              className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 border border-b-0 rounded-t-lg"
+            <Link
+            onClick={()=>setTabIndex(1)}
+            //   to={`author`}
+              className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2 ${tabIndex===1?'border border-b-0':'border-b'} rounded-t-lg `}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +70,7 @@ const Blog = () => {
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
               </svg>
-              <span>Corrupti</span>
+              <span>Author</span>
             </Link>
           </div>
         </div>
