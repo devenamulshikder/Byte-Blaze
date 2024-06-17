@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Blogs from './Pages/Blogs.jsx'
-import BookMarks from './Pages/BookMarks.jsx'
-import MainLayout from './layouts/MainLayout.jsx'
-import Home from './Pages/Home.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Blogs from "./Pages/Blogs.jsx";
+import BookMarks from "./Pages/BookMarks.jsx";
+import MainLayout from "./layouts/MainLayout.jsx";
+import Home from "./Pages/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,13 +14,13 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     children: [
       {
-
-        path:'/',
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+        loader: () => fetch("https://dev.to/api/articles?per_page=20&top=7"),
       },
       {
         path: "/bookmarks",
@@ -30,8 +30,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <RouterProvider router={router}></RouterProvider>
-  </>,
-)
+  </>
+);
