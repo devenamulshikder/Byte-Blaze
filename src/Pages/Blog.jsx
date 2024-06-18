@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import { MdBookmarkAdd } from "react-icons/md";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { saveBlogs } from "../utils";
 
 const Blog = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -13,6 +15,12 @@ const Blog = () => {
     public_reactions_count,
     published_at,
   } = blog;
+
+  const handleBookMark = blog=>{
+  
+    saveBlogs(blog)
+  }
+
   return (
     <div className="max-w-4xl px-6 py-16 mx-auto space-y-12">
       <article className="space-y-8">
@@ -76,6 +84,10 @@ const Blog = () => {
               </svg>
               <span>Author</span>
             </Link>
+            {/* Bookmark Button */}
+            <div onClick={()=>handleBookMark(blog)} className="bg-primary p-3 ml-5 rounded-full hover:bg-opacity-30 bg-opacity-20 cursor-pointer hover:scale-105 overflow-hidden">
+              <MdBookmarkAdd size={20} className="text-secondary"/>
+            </div>
           </div>
         </div>
         <Outlet />
